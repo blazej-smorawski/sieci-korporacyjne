@@ -11,8 +11,7 @@ titlepage-rule-height: 2
 ...
 
 # Warunki początkowe
- 1. Dla tego komputera powstanie nowy budynek o powierzchni około 800m2
-
+ 1. Dla tego komputera powstanie nowy budynek o powierzchni około 800m2 (20m x 40m).
 
 # Plan budynku
 ![](plan.svg "Plan budynku")
@@ -43,6 +42,28 @@ Potrzebny sprzęt:
 
 ### Administracyjna
 ### Bezpieczeństwa
+
+Do zadań realizowanych przez sieć bezpieczeństwa należą:
+- monitorowanie budynku za pomocą kamer
+- kontrola dostępu do budynku, jak i jego poszczególnych pomieszczeń za pomocą kart
+- monitorowanie i regulacja temperatury w pomieszczeniu, w którym znajduje się superkomputer
+- monitorowanie i powiadamianie o włamaniach do budynku
+- wykrywanie i powiadamianie o pożarze w budynku
+
+Potrzebne urządzenia:
+- 25 kamer do monitoringu,
+- 7 czytników NFC oraz kart dla każdego pracownika budynku,
+- 12 czujników temperatury,
+- 8 urządzeń chłodzących i 8 urządzeń pobierających ciepło,
+- 40 czujników antywłamaniowych,
+- 20 czujników dymu.
+
+Wybranym medium komunikacyjnym jest kabel Ethernet kategorii szóstej. Dokonano takiego wyboru, gdyż medium to zapewnia wystarczającą przepustowość oraz zasięg. 
+
+Potrzebny sprzęt:
+- przewody miedziane Ethernet kat.6 x ewqe = dads
+- przełącznik *ffooas* x iles = ewqew
+
 ### Dostępowa
    
 # Plan adresacji
@@ -52,3 +73,15 @@ Potrzebny sprzęt:
    
 ### Sieć administracyjna
     1. dasdasdsa
+
+### Sieć bezpieczeństwa
+
+| Sieć                | Podsieć           | Adres            |
+|---------------------|-------------------|------------------|
+| sieć bezpieczeństwa | monitoring        | 192.168.0.0/27   |
+| 192.168.0.0/24      | temperatura       | 192.168.0.32/27  |
+|                     | pożar             | 192.168.0.64/27  |
+|                     | dostęp i włamania | 192.168.0.128/26 |
+
+### Sieć dostępowa
+    1. asdasds
