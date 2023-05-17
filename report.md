@@ -58,14 +58,19 @@ Potrzebne urządzenia:
 - 40 czujników antywłamaniowych,
 - 20 czujników dymu.
 
-Wybranym medium komunikacyjnym jest kabel Ethernet kategorii szóstej. Dokonano takiego wyboru, gdyż medium to zapewnia wystarczającą przepustowość oraz zasięg. 
+Wybranym medium komunikacyjnym jest kabel Ethernet kategorii 5E. Dokonano takiego wyboru, gdyż medium to zapewnia wystarczającą przepustowość oraz zasięg. 
 
 Potrzebny sprzęt:
-- przewody miedziane Ethernet kat.6 x ewqe = dads
-- przełącznik *ffooas* x iles = ewqew
+- przewody miedziane Ethernet kat.5E -> 3500m
+- 5 przełączników *Cisco CBS350-48T-4X-EU Managed 48-port GE*
 
 ### Dostępowa
-   
+
+Celem sieci dostępowej jest zapewnienie dostępu całego obiektu do sieci Internet. Wobec tego ustalono, że potrzebne są dwa urządzenia typu ruter. Taką liczbę ustalono ze względów bezpieczeństwa, gdyż jeśli jedno urządzenie przestałoby działać, to zostałoby włączone drugie.
+
+Potrzebny sprzęt:
+- 2 routery *NVIDIA MGA100-HS2 Skyway*
+
 # Plan adresacji
 
 ### Sieć obliczeniowa
@@ -82,6 +87,3 @@ Potrzebny sprzęt:
 | 192.168.0.0/24      | temperatura       | 192.168.0.32/27  |
 |                     | pożar             | 192.168.0.64/27  |
 |                     | dostęp i włamania | 192.168.0.128/26 |
-
-### Sieć dostępowa
-    1. asdasds
