@@ -49,6 +49,7 @@ Do zadań realizowanych przez sieć bezpieczeństwa należą:
 - monitorowanie i regulacja temperatury w pomieszczeniu, w którym znajduje się superkomputer
 - monitorowanie i powiadamianie o włamaniach do budynku
 - wykrywanie i powiadamianie o pożarze w budynku
+- wyświetlanie obrazu z kamer i danych z czujników na komputerach pracowników
 
 Potrzebne urządzenia:
 - 25 kamer do monitoringu,
@@ -57,12 +58,13 @@ Potrzebne urządzenia:
 - 8 urządzeń chłodzących i 8 urządzeń pobierających ciepło,
 - 40 czujników antywłamaniowych,
 - 20 czujników dymu.
+- 6 podwójnych gniazdek Ethernet
 
 Wybranym medium komunikacyjnym jest kabel Ethernet kategorii 5E. Dokonano takiego wyboru, gdyż medium to zapewnia wystarczającą przepustowość oraz zasięg. 
 
 Potrzebny sprzęt:
-- przewody miedziane Ethernet kat.5E -> 3500m
-- 5 przełączników *Cisco CBS350-48T-4X-EU Managed 48-port GE*
+- przewody miedziane Ethernet kat.5E -> 3800m
+- 6 przełączników *Cisco CBS350-48T-4X-EU Managed 48-port GE*
 
 ### Dostępowa
 
