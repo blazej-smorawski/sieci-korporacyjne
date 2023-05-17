@@ -59,7 +59,7 @@ Wybrane przewody to *NVIDIA MCP2M00-A005E26L DAC 5m* oraz
 
 Potrzebny sprzęt:
  * Przełącznik *NVIDIA MSN4600-CS2F Spectrum-3 100GbE 2U Open Ethernet Switch* x 16 x 4 = **64**
- * Przewody miedziane *NVIDIA MCP1650-H00AE30 DAC 1m* x **2048**
+ * Przewody miedziane *NVIDIA MCP1650-V001E30 DAC 1m* x **2048**
  * Przewody miedziane *NVIDIA MCP2M00-A005E26L DAC 5m* x 30 x 16 = **480**
 
 ### Bezpieczeństwa
@@ -84,3 +84,18 @@ Potrzebny sprzęt:
    
 ### Sieć administracyjna
     1. dasdasdsa
+
+### Kosztorys
+
+|                                                     | Liczba | Cena        | Suma          |
+| --------------------------------------------------- | ------ | ----------- | ------------- |
+| *NVIDIA MQM8790-HS2R Quantum HDR InfiniBand Switch* | 64     | $65,159.00  | $4,170,176.00 |
+| *NVIDIA MCP1650-H00AE30 DAC 1m*                     | 2048   | $351.00     | $718,848.00   |
+| *NVIDIA MFS1S00-H015V AOC 15m*                      | 484    | $2,282.00   | $1,104,488.00 |
+| *NVIDIA MCP2M00-A005E26L DAC 5m*                    | 480    | $222.00     | $106,560.00   |
+| *NVIDIA MCP1650-V001E30 DAC 1m*                     | 2048   | $314.00     | $643,072.00   |
+| *NVIDIA MGA100-HS2 Skyway*\*                        | 2      | $55,795.00* | $111,590.00   |
+
+\* Cena routera przed przejęciem firmy *Mellanox* przez *NVidia*
+
+Suma: $6,854,734.00
