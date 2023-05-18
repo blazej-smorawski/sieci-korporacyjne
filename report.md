@@ -11,10 +11,10 @@ titlepage-rule-height: 2
 ...
 
 # Warunki początkowe
- 1. Dla tego komputera powstanie nowy budynek o powierzchni około 800m2
+Dla tego komputera powstanie nowy budynek o powierzchni około 800m2
 
 # Plan budynku
-![](arch.jpg "Plan budynku")
+![](plan.png "Plan budynku"){ width=50% }
 
 ### Pomieszczenia
  1. Pomieszczenie dla węzłów obliczeniowych
