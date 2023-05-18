@@ -125,7 +125,7 @@ Adresy w postaci 40.40.grupa.węzeł/16, gdzie węzły są pogrupowane według p
 |                     | pożar             | 192.168.0.64/27  |
 |                     | dostęp i włamania | 192.168.0.128/26 |
 
-### Kosztorys
+# Kosztorys
 
 |                                                                 | Liczba | Cena         | Suma          |
 | --------------------------------------------------------------- | ------ | ------------ | ------------- |
