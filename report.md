@@ -78,13 +78,13 @@ Potrzebne urządzenia:
 - 8 urządzeń chłodzących i 8 urządzeń pobierających ciepło,
 - 40 czujników antywłamaniowych,
 - 20 czujników dymu.
-- 6 podwójnych gniazdek Ethernet
 
 Wybranym medium komunikacyjnym jest kabel Ethernet kategorii 5E. Dokonano takiego wyboru, gdyż medium to zapewnia wystarczającą przepustowość oraz zasięg. 
 
 Potrzebny sprzęt:
 - przewody miedziane Ethernet kat.5E -> 3800m
 - 6 przełączników *Cisco CBS350-48T-4X-EU Managed 48-port GE*
+- 6 podwójnych gniazdek Ethernet *Alantec 2xRJ45 IP54* 
 
 ### Dostępowa
 
@@ -127,7 +127,10 @@ Potrzebny sprzęt:
 | *NVIDIA MCP2M00-A005E26L DAC 5m*                    | 480    | $222.00     | $106,560.00   |
 | *NVIDIA MCP1650-V001E30 DAC 1m*                     | 2048   | $314.00     | $643,072.00   |
 | *NVIDIA MGA100-HS2 Skyway*\*                        | 2      | $55,795.00* | $111,590.00   |
+| *Cisco CBS350-48T-4X-EU Managed 48-port GE*         | 6      | $1190.00    | $7140.00      |
+| *Molex UTP Cat 5e LSOH*                             | 3800m  | $0.50       | $1900.00      |
+| *Alantec 2xRJ45 IP54 wall socket*                   | 6      | $130.00     | $780.00       |
 
 \* Cena routera przed przejęciem firmy *Mellanox* przez *NVidia*
 
-Suma: $6,854,734.00
+Suma: $6,864,554.00
