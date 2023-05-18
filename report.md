@@ -11,8 +11,7 @@ titlepage-rule-height: 2
 ...
 
 # Warunki początkowe
- 1. Dla tego komputera powstanie nowy budynek o powierzchni około 800m2
-
+ 1. Dla tego komputera powstanie nowy budynek o powierzchni około 800m2 (20m x 40m).
 
 # Plan budynku
 ![](plan.svg "Plan budynku")
@@ -64,6 +63,29 @@ Potrzebny sprzęt:
 
 ### Bezpieczeństwa
 
+Do zadań realizowanych przez sieć bezpieczeństwa należą:
+- monitorowanie budynku za pomocą kamer
+- kontrola dostępu do budynku, jak i jego poszczególnych pomieszczeń za pomocą kart
+- monitorowanie i regulacja temperatury w pomieszczeniu, w którym znajduje się superkomputer
+- monitorowanie i powiadamianie o włamaniach do budynku
+- wykrywanie i powiadamianie o pożarze w budynku
+- wyświetlanie obrazu z kamer i danych z czujników na komputerach pracowników
+
+Potrzebne urządzenia:
+- 25 kamer do monitoringu,
+- 7 czytników NFC oraz kart dla każdego pracownika budynku,
+- 12 czujników temperatury,
+- 8 urządzeń chłodzących i 8 urządzeń pobierających ciepło,
+- 40 czujników antywłamaniowych,
+- 20 czujników dymu.
+- 6 podwójnych gniazdek Ethernet
+
+Wybranym medium komunikacyjnym jest kabel Ethernet kategorii 5E. Dokonano takiego wyboru, gdyż medium to zapewnia wystarczającą przepustowość oraz zasięg. 
+
+Potrzebny sprzęt:
+- przewody miedziane Ethernet kat.5E -> 3800m
+- 6 przełączników *Cisco CBS350-48T-4X-EU Managed 48-port GE*
+
 ### Dostępowa
 
 Celem sieci dostępowej jest zapewnienie dostępu z sieci internet do dwóch węzłów obliczeniowych pełniących rolę węzłów dostępowych. Firma telekomunikacyjna dostarcza dostarcza  nam 8 łącz ethernetowych 200Gb. Routery są bezpośrednio połączone dwoma optycznymi przewodami *NVIDIA MFS1S00-H015V AOC 15m* do każdego węzła dostępowego. Taka instalacja pozwala nam na osiągnięcie łącza rzędu 400Gb/s do jednego węzła dostępowego, co może być konieczne ze względu na wielu użytkowników oraz dużą zajętość danych przetwarzanych w takim klastrze.
@@ -76,7 +98,7 @@ Potrzebny sprzęt:
  * Router *NVIDIA MGA100-HS2 Skyway* x 2
  * Przewody optyczne *NVIDIA MFS1S00-H015V AOC 15m* x 4
 
-   
+
 # Plan adresacji
 
 ### Sieć obliczeniowa
@@ -84,6 +106,16 @@ Potrzebny sprzęt:
    
 ### Sieć administracyjna
     1. dasdasdsa
+
+
+### Sieć bezpieczeństwa
+
+| Sieć                | Podsieć           | Adres            |
+|---------------------|-------------------|------------------|
+| sieć bezpieczeństwa | monitoring        | 192.168.0.0/27   |
+| 192.168.0.0/24      | temperatura       | 192.168.0.32/27  |
+|                     | pożar             | 192.168.0.64/27  |
+|                     | dostęp i włamania | 192.168.0.128/26 |
 
 ### Kosztorys
 
