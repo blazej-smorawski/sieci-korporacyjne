@@ -10,8 +10,8 @@ titlepage-rule-color: "FFFFFF"
 titlepage-rule-height: 2
 ...
 
-# Warunki początkowe
-Dla tego komputera powstanie nowy budynek o powierzchni około 800m2
+# Założenia
+Dla tego komputera powstanie nowy budynek o powierzchni około 800m2. Założono, że super komputer będzie miał 2048 węzłów obliczeniowych, które są pogrupowane w 16 grup. Oprócz tego, założono iż będą 4 podwieszane kanały. Istotne jest, aby było jak najmniejsze opóźnienie w przesyłaniu danych między węzłami oraz jak największa przepustowość.
 
 # Plan budynku
 ![](plan.png "Plan budynku"){ width=50% }
@@ -77,12 +77,12 @@ Do zadań realizowanych przez sieć bezpieczeństwa należą:
 - wyświetlanie obrazu z kamer i danych z czujników na komputerach pracowników
 
 Potrzebne urządzenia:
-- 25 kamer do monitoringu,
-- 7 czytników NFC oraz kart dla każdego pracownika budynku,
-- 12 czujników temperatury,
-- 8 urządzeń chłodzących i 8 urządzeń pobierających ciepło,
-- 40 czujników antywłamaniowych,
-- 20 czujników dymu.
+- ok. 25 kamer do monitoringu,
+- ok. 7 czytników NFC oraz kart dla każdego pracownika budynku,
+- ok. 20 000 czujników temperatury,
+- ok. 8 urządzeń chłodzących i 8 urządzeń pobierających ciepło,
+- ok. 40 czujników antywłamaniowych,
+- ok. 20 czujników dymu.
 
 Wybranym medium komunikacyjnym jest kabel Ethernet kategorii 5E. Dokonano takiego wyboru, gdyż medium to zapewnia wystarczającą przepustowość oraz zasięg. 
 
@@ -125,6 +125,18 @@ Adresy w postaci 40.40.grupa.węzeł/16, gdzie węzły są pogrupowane według p
 |                     | pożar             | 192.168.0.64/27  |
 |                     | dostęp i włamania | 192.168.0.128/26 |
 
+# Projekt logiczny 
+
+# Projekt fizyczny
+
+# Niezawodność
+
+Dzięki zastosowaniu dwóch routerów zapewniona jest niezawodność, gdyż jeśli jeden z nich by uległ awarii to możnaby wykorzsytać drugi. Krytyczne połączenia są zrealizowane z użyciem dwóch przewodów.
+
+# Skalowalność
+
+Projekt sieci dla superkomputera jest skalowalny, gdyż założono nadmiar sprzętu przy projektowaniu.
+
 # Kosztorys
 
 |                                                                 | Liczba | Cena         | Suma          |
@@ -136,10 +148,12 @@ Adresy w postaci 40.40.grupa.węzeł/16, gdzie węzły są pogrupowane według p
 | *NVIDIA MCP2M00-A005E26L DAC 5m*                                | 240    | $222.00      | $53,280.00    |
 | *NVIDIA MCP1650-V001E30 DAC 1m*                                 | 2560   | $314.00      | $803,840.00   |
 | *NVIDIA MGA100-HS2 Skyway*\*                                    | 2      | $55,795.00\* | $111,590.00   |
-| *Cisco CBS350-48T-4X-EU Managed 48-port GE*                     | 6      | $1190.00     | $7140.00      |
-| *Molex UTP Cat 5e LSOH*                                         | 3800m  | $0.50        | $1900.00      |
+| *Cisco WS-C3850-48XS-E*                                         | 9      | $64,156.00   | $577,404.00   |
+| *Licencja do przełącznika*                                      | 9      | $15,877.00   | $142,893.00   |
+| *Molex UTP Cat 5e LSOH*                                         | 5500m  | $0.50        | $2750.00      |
 | *Alantec 2xRJ45 IP54 wall socket*                               | 6      | $130.00      | $780.00       |
+| *Raspbery Pi 3B+*                                               | 32     | $110.00      | $3520.00      |
 
 \* Cena routera przed przejęciem firmy *Mellanox* przez *NVidia*
 
-Suma: $10,362,638.00 + $9,820.00
+Suma: $10,362,638.00 + $727,347.00
