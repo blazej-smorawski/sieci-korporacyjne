@@ -11,10 +11,12 @@ titlepage-rule-height: 2
 ...
 
 # Założenia
-Dla tego komputera powstanie nowy budynek o powierzchni około 800m2. Założono, że super komputer będzie miał 2048 węzłów obliczeniowych, które są pogrupowane w 16 grup. Oprócz tego, założono iż będą 4 podwieszane kanały. Istotne jest, aby było jak najmniejsze opóźnienie w przesyłaniu danych między węzłami oraz jak największa przepustowość.
+Dla tego komputera powstanie nowy budynek o powierzchni około 800m2. Założono, że super komputer będzie miał 2048 węzłów obliczeniowych, które są pogrupowane w 16 grup. Oprócz tego, założono iż będą 4 podwieszane kanały. Istotne jest, aby było jak najmniejsze opóźnienie w przesyłaniu danych między węzłami oraz jak największa przepustowość. 
+
+Dodatkowym założeniem jest brak rozbudowy klastra - klaster jest budowany pod kątem maksymalnej wydajności bez planów jakichkolwiek zmian architektury. Lokalność węzłów obliczeniowych jest krytyczna, dlatego nie przewidziano możliwości podłączenia kolejnych szaf, kolejnych grup czy przełączników. Zaplanowany układ oferuje najwydajniejszą komunikację i nie ma możliwości dodania jakiegokolwiek węzła bez zaburzenia symetrii komunikacji między resztą.
 
 # Plan budynku
-![](plan.png "Plan budynku"){ width=50% }
+![Uproszczony plan budynku](plan.svg){ width=50% }
 
 ### Pomieszczenia
  1. Pomieszczenie dla węzłów obliczeniowych
@@ -49,9 +51,9 @@ Potrzebny sprzęt:
  - Przewody miedziane *NVIDIA MCP1650-H00AE30 DAC 1m* x 2048 + 16 * 4 * 4 * 2  = **2560**
  - Przewody optyczne *NVIDIA MFS1S00-H015V AOC 15m* x 16 x 15 = **240**
 
-### Administracyjna
+### Sieć kontrolna
 
-Sieć administracyjna jest siecią odseparowaną fizycznie od sieci, która pozwala nam na kontrolowanie pracy klastra bez wpływu na jego parametry obliczeniowe. Ze względu na mniejsze wymagania wydajnościowe będzie to sieć **Ethernetowa**.
+Sieć kontrolna jest siecią odseparowaną fizycznie od sieci, która pozwala nam na kontrolowanie pracy klastra bez wpływu na jego parametry obliczeniowe. Ze względu na mniejsze wymagania wydajnościowe będzie to sieć **Ethernetowa**.
 
 Wybraliśmy przełączniki firmy *NVidia* ze względu na bardzo dobre zdolności telemetryczne, niskie opóźnienia i złożone mechanizmy zarządania ruchem. 
 
@@ -65,6 +67,10 @@ Potrzebny sprzęt:
  - Przełącznik *NVIDIA MSN4600-CS2F Spectrum-3 100GbE 2U Open Ethernet Switch* x 16 x 4 = **64**
  - Przewody miedziane *NVIDIA MCP1650-V001E30 DAC 1m* x **2560**
  - Przewody miedziane *NVIDIA MCP2M00-A005E26L DAC 5m* x 16 x 15 = **480**
+
+### Sieć administracji sprzętu sieciowego
+
+Sieć łącząca wszsytkie przełączniki i routery z powyższych sieci w celach konfiguracyjnych. Wykorzysuje przewody miedziane i złącza RJ-45. Ze względu na niskie wymagania będzie oparta o przełączniki *Cisco CBS350-48T-4X-EU Managed 48-port GE* x 16.
 
 ### Bezpieczeństwa
 
@@ -110,11 +116,15 @@ Potrzebny sprzęt:
 
 ### Sieć obliczeniowa
 
-Adresy w postaci 10.10.grupa.węzeł/16, gdzie węzły są pogrupowane według prznależności do szaf kolejno od 1 do 128. Adres 10.10.grupa.254/16 przynależy do przełącznika wyjściowego, a adresy 10.10.grupa.[250-253]/16 do przełączników w grupie elektrycznej.
+Adresy w postaci 10.10.grupa.węzeł/16, gdzie węzły są pogrupowane według prznależności do szaf kolejno od 1 do 128.
    
+### Sieć Kontrolna
+
+Adresy w postaci 40.40.grupa.węzeł/16, gdzie węzły są pogrupowane według prznależności do szaf kolejno od 1 do 128.
+
 ### Sieć administracyjna
 
-Adresy w postaci 40.40.grupa.węzeł/16, gdzie węzły są pogrupowane według prznależności do szaf kolejno od 1 do 128. Adres 40.40.grupa.254/16 przynależy do przełącznika wyjściowego, a adresy 40.40.grupa.[250-253]/16 do przełączników podłączonych do węzłów obliczeniowych.
+Adresy w postaci 80.80.grupa.przełącznik/16, gdzie przełączniki są pogrupowane według prznależności do szaf kolejno od 1 do 8. Adres 80.80.grupa.255/16 to adres przełącznika administracyjnego. Adresy routerów to 80.80.255.[254,255]/16.
 
 ### Sieć bezpieczeństwa
 
@@ -125,17 +135,32 @@ Adresy w postaci 40.40.grupa.węzeł/16, gdzie węzły są pogrupowane według p
 |                     | pożar             | 192.168.0.64/27  |
 |                     | dostęp i włamania | 192.168.0.128/26 |
 
-# Projekt logiczny 
 
-# Projekt fizyczny
+![Projekt sieci logicznej](logiczna.png "Plan budynku"){ width=50% }
+
+
+![Projekt sieci fizycznej](fizyczna.png "Plan budynku"){ width=50% }
+
+---
 
 # Niezawodność
 
-Dzięki zastosowaniu dwóch routerów zapewniona jest niezawodność, gdyż jeśli jeden z nich by uległ awarii to możnaby wykorzsytać drugi. Krytyczne połączenia są zrealizowane z użyciem dwóch przewodów.
+Niezawodność została osiągnięta przez:
+
+ * Redundancję na poziomie:
+   * Łącza dostarczane przez dostawcę usług sieciowych
+   * Routerów - 2
+   * Przełączników - każdy węzęł podłączony do dwóch
+   * Sieci - dwie niezależne sieci podłączone do każdego węzła
+   * Interferjsów sieciowych - minimum dwa interfejsy sieciowe w węźle
+   * Zasilacze i wentylatory wewnątrz sprzętu sieciowego.
+ * Zastosowanie różnych standardów połączeń - *Infiniband* + *Ethernet*
+ * Sprzęt sieciowy pozwalający na naprawy w trakcie pracy
+ * Przewody sieciowe o bardzo niskiej stopie błędów
 
 # Skalowalność
 
-Projekt sieci dla superkomputera jest skalowalny, gdyż założono nadmiar sprzętu przy projektowaniu.
+Sieć nie została zaprojektowana pod kątem skalowania w przyszłości.
 
 # Kosztorys
 
